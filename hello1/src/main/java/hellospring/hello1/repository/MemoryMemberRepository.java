@@ -1,23 +1,31 @@
 package hellospring.hello1.repository;
 
 import hellospring.hello1.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-public class MemoryMemberRepository implements MemberRepository {
+//@Repository
+public class MemoryMemberRepository implements MemberRepository{
+
     private static Map<Long, Member> store = new HashMap<>();
-    private static Long sequence = 0L;
+    private static long sequence = 0L;
+
     @Override
     public Member save(Member member) {
-        member.setId(++sequence);
-        store.put(member.getId(), member); // (Long, Member)
+        member.setId(++sequence);   // 멤버를 저장할 때 일련번호 값을 1씩 증가
+        store.put(member.getId(), member);
         return member;
     }
 
     @Override
     public Optional<Member> findById(Long id) {
+
         return Optional.ofNullable(store.get(id));
     }
+    // 검색된 멤버를 Optional 로 감싸서 반환
+    // Optional.ofNullable null 이 아니면 감싸서 반환
+    // null 이면 Optional.empty()를 반환
 
     @Override
     public Optional<Member> findByName(String name) {
@@ -30,8 +38,7 @@ public class MemoryMemberRepository implements MemberRepository {
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
     }
-
-    public void clearStore() {
+    public void clearStore(){
         store.clear();
-    }
+    };
 }

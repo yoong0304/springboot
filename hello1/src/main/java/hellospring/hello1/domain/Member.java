@@ -1,16 +1,16 @@
 package hellospring.hello1.domain;
 
-public class Member {
-    private Long id;
-    private String name;
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+import javax.persistence.*;
+
+@Entity
+public class Member {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
+    private String name;
 
     public Long getId() {
         return id;
@@ -26,5 +26,13 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
