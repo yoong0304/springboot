@@ -11,6 +11,7 @@ public class ArticleForm {
     private Long id;
     private String title;
     private String content;
+
 //    update 를 위한 dto 변경 - id 필드 추가 및 엔티티 변환 메소드 변경
 //    public ArticleForm(String title, String content) {
 //        this.title = title;
