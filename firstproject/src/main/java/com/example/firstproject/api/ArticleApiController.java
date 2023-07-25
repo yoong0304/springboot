@@ -62,6 +62,7 @@ public class ArticleApiController {
 
 //    한꺼번에 데이터 저장
 //    트랜젝션 -> 예외 발생 -> 롤백
+
     @PostMapping("/api/transaction-test")
     public ResponseEntity<List<Article>> transactionTest(@RequestBody List<ArticleForm> dtos){
 //        Article 을 리스트(묶음) 단위 전송, ResponseEntity 로 감사서 받음
