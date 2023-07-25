@@ -1,0 +1,25 @@
+{{>layouts/header}}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">title</th>
+            <th scope="col">content</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#articleEntity}}
+        <tr>
+            <th>{{id}}</th>
+            <th>{{title}}</th>
+            <th>{{content}}</th>
+        </tr>
+    {{/articleEntity}}
+    </tbody>
+</table>
+    <a href="/articles/{{articleEntity.id}}/edit" class="btn btn-primary">수정</a>
+    <a href="/articles/{{articleEntity.id}}/delete" class="btn btn-danger">삭제</a>
+    <a href="/articles">Go to Article List</a>
+
+
+{{>layouts/footer}}
