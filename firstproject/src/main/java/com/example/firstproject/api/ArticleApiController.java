@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @Slf4j
 public class ArticleApiController {
-
     @Autowired
     private ArticleService articleService;
 
