@@ -1,8 +1,10 @@
 package com.example.firstproject.controller;
 
 import com.example.firstproject.dto.ArticleForm;
+import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.repository.ArticleRepository;
+import com.example.firstproject.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,10 @@ public class ArticleController {
     @Autowired
     private ArticleRepository articleRepository;
 //    스프링 부트가 미리 생성해놓은 레퍼지토리 객체를 가져옴(DI)
+    @Autowired
+    private CommentService commentService;
+
+
 
     @GetMapping("articles/new")
     public String newArticleForm(){
@@ -70,10 +76,13 @@ public class ArticleController {
 
 //          좋은 방법이 아님
             Article articleEntity = articleRepository.findById(id).orElse(null);
+            List<CommentDto> commentsDtos = commentService.comments(id);
 
 
 //        2. 가져온 데이터를 모델에 등록(화면에 보여줌)
             model.addAttribute("article",articleEntity);
+            model.addAttribute("commentDtos", commentsDtos);
+
 //        3. 보여줄 페이지를 설정
 
         return "articles/show";
