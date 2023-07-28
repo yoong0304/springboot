@@ -5,6 +5,7 @@ import com.example.firstproject.entity.Article;
 import com.example.firstproject.entity.Comment;
 import com.example.firstproject.repository.ArticleRepository;
 import com.example.firstproject.repository.CommentRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 
 @Transactional      // create, update, delete 에 하나씩 다 붙이거나 클래스 전체에 붙이고 comments 에 readOnly 붙이기
 @Service
+@Slf4j
 public class CommentService {
 
     @Autowired
@@ -49,6 +51,8 @@ public class CommentService {
     }
 
     public CommentDto create(Long articleId, CommentDto dto) {
+//        log.info("입력값 => {}", articleId);
+//        log.info("입력값 => {}", dto);
 //        게시글 조회 및 예외발생
         Article article = articleRepository.findById(articleId).orElseThrow(
                 () -> new IllegalArgumentException("댓글 생성 실패! 대상 게시글이 없습니다.")
@@ -59,8 +63,12 @@ public class CommentService {
 //        댓글 엔티티를 DB 로 저장
         Comment created = commentRepository.save(comment);
 
+
 //        DTO 로 변경하여 반환
         return CommentDto.createCommentDto(created);
+//        CommentDto createdDto = CommentDto.createCommentDto(created);
+//        log.info("반환값 => {}", createdDto);
+//        return createdDto;
     }
 
     public CommentDto update(Long id, CommentDto dto) {
@@ -83,6 +91,8 @@ public class CommentService {
 
 //        댓글 삭제
         commentRepository.delete(target);
+
+//        삭제 댓글을 DTO 로 반환
         return CommentDto.createCommentDto(target);
 
     }

@@ -18,8 +18,14 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mustache'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'	// 자동설치와 자동 연결?
-	runtimeOnly 'com.h2database:h2'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.junit.jupiter:junit-jupiter:5.8.1'// 자동설치와 자동 연결?
+//	h2
+//	runtimeOnly 'com.h2database:h2'
+//	postgresql
+//	runtimeOnly 'org.postgresql:postgresql'
+//	mysql
+	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 //	lombok

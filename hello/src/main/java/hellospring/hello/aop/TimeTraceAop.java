@@ -28,7 +28,7 @@ public class TimeTraceAop {
 // hellospring.hello 패키지와 그 하위 패키지에 속한
 // 모든 메서드들을 대상으로 AOP를 적용하겠다는 의미이다.
 
-// JoinPoint - 사이사이의 모든 메서든
+// JoinPoint - 사이사이의 모든 메서드
 
 // .execute 메서드는 @Around 어노테이션에 정의된 포인트컷(Pointcut)에 해당하는 메서드들이 실행될 때 호출된다.
 

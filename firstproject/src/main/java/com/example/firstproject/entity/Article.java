@@ -7,6 +7,8 @@ import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 // LOMBOK
@@ -24,6 +26,9 @@ public class Article {
     private String title;
     @Column
     private String content;
+//      orphanRemoval 고아 객체를 true 로 지정하면 부모가 지워지면 고아객체가 된 자식 객체들도 다 삭제가 된다.
+//    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Comment> comments = new ArrayList<>();
 
     public void patch(Article article) {
         if(article.title != null)
