@@ -1,8 +1,6 @@
 package jpabook.jpashop.domain;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,7 +9,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
-@Data   // getter setter
+@Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
     @Id
@@ -93,6 +92,14 @@ public class Order {
             orderItem.cancel();
         }
     }
-
+// 조회 로직
+    /* 전체 주문 가격 조회 */
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for(OrderItem orderItem : orderItems){
+            totalPrice += orderItem.getTotalPrice();    // 각 상품마다의 최종 가격을 totalPrice 에 누적
+        }
+        return totalPrice;
+    }
 
 }
