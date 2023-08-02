@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">  <!-- 타임리프 사용 -->
+<head th:replace="fragments/header :: header">  <!-- fragments/header 로 대체-->
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+    <div class="jumbotron">
+        <h1>HELLO SHOP</h1>
+        <p class="lead">회원 기능</p>
+        <p>
+            <a href="/members/new" class="htn btn-lg btn-secondary">회원 가입</a>
+            <a href="/members" class="htn btn-lg btn-secondary">회원 목록</a>
+        </p>
+        <p class="lead">상품 기능</p>
+        <p>
+            <a href="/items/new" class="htn btn-lg btn-dark">상품 등록</a>
+            <a href="/items" class="htn btn-lg btn-dark">상품 목록</a>
+        </p>
+        <p class="lead">주문 기능</p>
+        <p>
+            <a href="/order" class="htn btn-lg btn-info">상품 주문</a>
+            <a href="/orders" class="htn btn-lg btn-info">주문 내역</a>
+        </p>
+    </div>
+    <div th:replace="fragments/footer :: footer" />     <!-- 타임리프에서 마지막 /로 닫는 태그 생략 가능 -->
+</div> <!-- /container -->
+</body>
+</html>
