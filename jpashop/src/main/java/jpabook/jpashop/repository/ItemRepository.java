@@ -18,6 +18,8 @@ public class ItemRepository {
         } else {
             em.merge(item); // 아이템을 업데이트
         }
+//        em.persist(item);
+
     }
     /* em.merge(item)
     merge 메서드를 사용하여 이미 존재하는 item 엔티티를 데이터 베이스에 업데이트한다.

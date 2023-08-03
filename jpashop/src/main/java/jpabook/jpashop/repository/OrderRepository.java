@@ -43,7 +43,7 @@ public class OrderRepository {
                 jpql += " where";
                 isFirstCondition = false;
             }else {
-                jpql += " end";
+                jpql += " and";
             }
             jpql += " m.name like :name";
         }
@@ -52,7 +52,7 @@ public class OrderRepository {
             query = query.setParameter("status",orderSearch.getOrderStatus());
         }
         if (StringUtils.hasText(orderSearch.getMemberName())){
-            query = query.setParameter("status",orderSearch.getMemberName());
+            query = query.setParameter("name",orderSearch.getMemberName());
         }
         return query.getResultList();
     }
