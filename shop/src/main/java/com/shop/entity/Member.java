@@ -39,7 +39,7 @@ public class Member {
         member.setAddress(memberFormDto.getAddress());
         String password = passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
-        member.setRole(Role.ADMIN);
+        member.setRole(Role.ADMIN);  /* 맨처음 ADMIN 으로 하고 그 다음부터는 USER 로 사용하면 된다.*/
         return member;
     }
 }

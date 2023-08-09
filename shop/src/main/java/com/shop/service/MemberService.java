@@ -32,13 +32,13 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberRepository.findByEmail(email);
-        if (member != null){
+        if (member == null){
             throw new UsernameNotFoundException(email);
         }
         return User.builder()
                 .username(member.getEmail())
                 .password(member.getPassword())
-                .roles(member.getRole().toString())
+                .roles(member.getRole().toString()) /* -> toString() 하면 ROLE_USER or ROLE_ADMIN 으로 출력된다 */
                 .build();
 
 //        UserDetails 객체는 Spring Security 에서 사용자의 인증 및 권한 정보를 나타내는 인터페이스
