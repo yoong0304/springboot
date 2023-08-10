@@ -10,13 +10,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "member")
+@Table(name="member")
 @Getter
 @Setter
 @ToString
-public class Member {
+public class Member extends BaseEntity{
+
     @Id
-    @Column(name = "Member_id")
+    @Column(name="Member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -31,15 +32,14 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public static Member createMember(MemberFormDto memberFormDto,
-                                      PasswordEncoder passwordEncoder){     /* security 에서 만든 PasswordEncoder */
+    public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
         Member member = new Member();
         member.setName(memberFormDto.getName());
         member.setEmail(memberFormDto.getEmail());
         member.setAddress(memberFormDto.getAddress());
         String password = passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
-        member.setRole(Role.ADMIN);  /* 맨처음 ADMIN 으로 하고 그 다음부터는 USER 로 사용하면 된다.*/
+        member.setRole(Role.ADMIN);
         return member;
     }
 }

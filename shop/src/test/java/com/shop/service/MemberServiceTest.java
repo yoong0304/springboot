@@ -1,6 +1,5 @@
 package com.shop.service;
 
-import com.shop.constant.Role;
 import com.shop.dto.MemberFormDto;
 import com.shop.entity.Member;
 import com.shop.repository.MemberRepository;
@@ -16,11 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@TestPropertySource(locations = "classpath:application-test.properties")
+@TestPropertySource(locations="classpath:application-test.properties")
+
 class MemberServiceTest {
 
     @Autowired
     MemberService memberService;
+
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -33,12 +34,12 @@ class MemberServiceTest {
         return Member.createMember(memberFormDto, passwordEncoder);
     }
 
+
     @Test
     @DisplayName("회원가입 테스트")
     void saveMember() {
         Member member = createMember();
         Member savedMember = memberService.saveMember(member);
-
         assertEquals(member.getEmail(), savedMember.getEmail());
         assertEquals(member.getName(), savedMember.getName());
         assertEquals(member.getAddress(), savedMember.getAddress());
@@ -54,8 +55,9 @@ class MemberServiceTest {
         Member member2 = createMember();
         memberService.saveMember(member1);
         Throwable e = assertThrows(IllegalStateException.class, () -> {
-            memberService.saveMember(member2);
-        });
+            memberService.saveMember(member2);});
         assertEquals("이미 가입된 회원입니다.", e.getMessage());
     }
+
+
 }

@@ -10,40 +10,40 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "item")
+@Table(name="item")
 @Getter
 @Setter
 @ToString
-public class Item {
+public class Item extends BaseEntity {
+
     @Id
-    @Column(name = "item_id")
+    @Column(name="item_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;    /* 상품 코드 */
+    private Long id;
 
-    @Column(nullable = false, length = 50)  /* nullable = false null 값이 안 들어옴 */
-    private String itemNm;  /* 상품명 */
+    @Column(nullable = false, length=50)
+    private String itemNm;
 
-    @Column(name = "price", nullable = false)
-    private int price;  /* 가격 */
+    @Column(name="price", nullable = false)
+    private int price;
 
     @Column(nullable = false)
-    private int stockNumber;    /* 재고 수량 */
+    private int stockNumber;
 
-    @Lob    /* Large Object 의 약자 -  */
+    @Lob  //Large Object-큰데이터 저장
     @Column(nullable = false)
-    private String itemDetail;  /* 상품 상세 설명 */
+    private String  itemDetail;
 
     @Enumerated(EnumType.STRING)
-    private ItemSellStatus itemSellStatus;  /* 상품 판매 상태 */
+    private ItemSellStatus itemSellStatus;
 
-    private LocalDateTime regTime;  /* 등록 시간 */
-    private LocalDateTime updateTime;   /* 수정 시간 */
+
 
     public void removeStock(int stockNumber){
         int restStock = this.stockNumber - stockNumber;
-        if (restStock < 0){
+        if(restStock < 0){
             throw new OutOfStockException("상품의 재고가 부족합니다. " +
-                    "(현재 재고 수량: " + this.stockNumber + ")");
+                    "(현재 재고 수량: "+this.stockNumber+")");
         }
         this.stockNumber = restStock;
     }

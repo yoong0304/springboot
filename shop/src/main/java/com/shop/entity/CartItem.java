@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "cart_item")
-public class CartItem {
+@Table(name="cart_item")
+public class CartItem extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -17,7 +17,7 @@ public class CartItem {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cart_id")
+    @JoinColumn(name="cart_id")
     private Cart cart;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,4 +38,6 @@ public class CartItem {
     public void updateCount(int count){
         this.count = count;
     }
+
+
 }

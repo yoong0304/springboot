@@ -27,7 +27,7 @@ class ItemControllerTest {
     public void itemFormTest() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/admin/item/new"))
                 .andDo(print())
-                .andExpect(status().isOk());    /* 200 */
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -36,6 +36,6 @@ class ItemControllerTest {
     public void itemFormNotAdminTest() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/admin/item/new"))
                 .andDo(print())
-                .andExpect(status().isForbidden()); /* 403? */
+                .andExpect(status().isForbidden());
     }
 }

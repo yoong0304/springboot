@@ -1,5 +1,6 @@
 package com.shop.config;
 
+
 import com.shop.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,25 +19,27 @@ public class SecurityConfig {
     MemberService memberService;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.formLogin()
                 .loginPage("/members/login")
-                .defaultSuccessUrl("/") /* 로그인 성공하면 루트로*/
+                .defaultSuccessUrl("/")
                 .usernameParameter("email")
-                .failureUrl("/member/login/error")  /*실패하면*/
-                .and()      /*그리고*/
-                .logout()   /*로그아웃하면*/
+                .failureUrl("/members/login/error")
+                .and()
+                .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
-                .logoutSuccessUrl("/");     /*성공하면 루트*/
-
+                .logoutSuccessUrl("/")
+        ;
         http.authorizeRequests()
                 .mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**").permitAll()
-                .mvcMatchers("/admin/**").hasRole("ADMIN")  /* admin 에 접근할라면 ADMIN 을 가지고 있어야 된다.*/
-                .anyRequest().authenticated();
+                .mvcMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+        ;
 
         http.exceptionHandling()
-                .authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+                .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
+        ;
 
         return http.build();
     }
@@ -45,6 +48,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-//    패스워드 암호화
 
 }
