@@ -48,6 +48,7 @@ public class ItemImgService {
         if(!itemImgFile.isEmpty()){
             ItemImg savedItemImg = itemImgRepository.findById(itemImgId)
                     .orElseThrow(EntityNotFoundException::new);
+//            기존 이미지 정보를 가져오기
 
             //기존 이미지 파일 삭제
             if(!StringUtils.isEmpty(savedItemImg.getImgName())) {
@@ -55,10 +56,11 @@ public class ItemImgService {
                         savedItemImg.getImgName());
             }
 
-            String oriImgName = itemImgFile.getOriginalFilename();
+            String oriImgName = itemImgFile.getOriginalFilename();  // 새로운 이미지 파일의 원본 파일 이름을 가져온다.
             String imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
             String imgUrl = "/images/item/" + imgName;
-            savedItemImg.updateItemImg(oriImgName, imgName, imgUrl);
+            savedItemImg.updateItemImg(oriImgName, imgName, imgUrl); // -> ItemImg 에 있는 updateItemImg() 메서드
+//            이미지 정보 엔티티의 필드를 업데이트 합니다.
         }
     }
 }

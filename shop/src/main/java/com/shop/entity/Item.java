@@ -1,6 +1,7 @@
 package com.shop.entity;
 
 import com.shop.constant.ItemSellStatus;
+import com.shop.dto.ItemFormDto;
 import com.shop.exception.OutOfStockException;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,6 +38,15 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
 
+
+//    ItemFormDto 로부터 가져온 정보를 사용하여 Item 엔티티의 필드를 업데이트
+    public void updateItem(ItemFormDto itemFormDto){
+        this.itemNm = itemFormDto.getItemNm();
+        this.price = itemFormDto.getPrice();
+        this.stockNumber = itemFormDto.getStockNumber();
+        this.itemDetail = itemFormDto.getItemDetail();
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
+    }
 
 
     public void removeStock(int stockNumber){

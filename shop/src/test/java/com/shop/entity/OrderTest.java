@@ -79,7 +79,7 @@ public void cascadeTest() {
 //order 가 저장되면서 order 와 연관된 OrderItem 엔티티도 자동 저장된다.
 
 public Order createOrder(){
-        Order order =new Order(); //주문생성 - order
+        Order order = new Order(); //주문생성 - order
         for(int i=0; i < 3; i++ ){
             Item item = createItem();
             itemRepository.save(item); //주문항목 저장
