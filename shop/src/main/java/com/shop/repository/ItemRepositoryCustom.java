@@ -1,12 +1,14 @@
 package com.shop.repository;
 
 import com.shop.dto.ItemSearchDto;
+import com.shop.dto.MainItemDto;
 import com.shop.entity.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ItemRepositoryCustom {
     Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
+    Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
 }
 // ItemSearchDto itemSearchDto 검색조건 DTO
 // jpa 에서 제공하는 페이징과 정렬 정보를 갖고 있는 Pageable 객체(번호, 페이지 크기, 정렬 조건) 사용
