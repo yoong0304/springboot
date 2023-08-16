@@ -41,5 +41,6 @@ public class OrderItem extends BaseEntity {
     public void cancel() {
         this.getItem().addStock(count);
     }
+//    주문 취소시 재고를 늘려줌(원상복구)
 
 }
