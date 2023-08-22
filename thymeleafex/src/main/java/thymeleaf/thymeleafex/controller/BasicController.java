@@ -47,6 +47,7 @@ public class BasicController {
     @Component(value = "helloBean")
     static class HelloBean{
         public String hello(String data){
+
             return "Hello " + data;
         }
     }
