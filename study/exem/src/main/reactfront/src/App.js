@@ -1,18 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+
 
 function App() {
+  const [num, setNum] = useState(0);
+  const [numList, setNumList] = useState([]);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className='her'>허코딩</div>
-        <div style={{backgroundColor:"blue", color:"#fff"}}>허허코딩</div>
-      </header>
-    </div>
-    
-  );
+function numRecoding() {
+  setNumList([...numList, num]);
+  setNum(0);
+}
+
+return(
+  <div className="App">
+    <div>현재 숫자 : {num}</div>
+    <button onClick={()=>{setNum(num+1)}}>숫자 증가</button>
+    <button onClick={()=>{setNum(num-1)}}>숫자 감소</button>
+    <button onClick={numRecoding}>숫자 기록</button>
+    <h1> 저장된 숫자 </h1>
+    <ul>
+      {numList.map((num) => (
+        <li>{num}</li>
+        ))}
+    </ul>
+  </div>
+);
 }
 
 export default App;
