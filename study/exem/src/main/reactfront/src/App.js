@@ -1,31 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-
-function App() {
-  const [num, setNum] = useState(0);
-  const [numList, setNumList] = useState([]);
-
-function numRecoding() {
-  setNumList([...numList, num]);
-  setNum(0);
-}
-
-return(
-  <div className="App">
-    <div>현재 숫자 : {num}</div>
-    <button onClick={()=>{setNum(num+1)}}>숫자 증가</button>
-    <button onClick={()=>{setNum(num-1)}}>숫자 감소</button>
-    <button onClick={numRecoding}>숫자 기록</button>
-    <h1> 저장된 숫자 </h1>
-    <ul>
-      {numList.map((num) => (
-        <li>{num}</li>
-        ))}
-    </ul>
+const App = () => {
+  const [text, setText] = useState("111");
+  const [edit, setEdit] = useState(false);
+  let content = <div>{text}
+  <button onClick={() => setEdit(true)}>수정</button>
   </div>
-);
+  if (edit) {
+    content = <div>
+      <input type="text"
+        value={text}
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+      />
+      <button onClick={() => setEdit(false)}>수정</button>
+    </div>
+  }
+
+
+  return (
+    <>
+      {content}
+    </>
+  )
 }
 
 export default App;
