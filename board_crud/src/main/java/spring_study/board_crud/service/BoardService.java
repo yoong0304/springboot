@@ -39,6 +39,7 @@ public class BoardService {
         board.setContent(content);
     }
 
+    @Transactional
     public void delete(Board board) {
         boardRepository.delete(board);
     }

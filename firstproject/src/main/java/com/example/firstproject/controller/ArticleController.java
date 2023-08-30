@@ -101,7 +101,6 @@ public class ArticleController {
     public String edit(@PathVariable Long id, Model model){
 //        수정할 데이터 가져오기
         Article articleEntity = articleRepository.findById(id).orElse(null);
-
 //        모델 데이터 등록
         model.addAttribute("articleEdit",articleEntity);
 

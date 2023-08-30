@@ -20,15 +20,15 @@ public class ItemImg extends BaseEntity{
     private String imgUrl;  // 이미지 조회 경로
     private String repimgYn;    // 대표 이미지 여부
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_id")
-    private Item item;
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "item_id")
+        private Item item;
 
-    public void updateItemImg(String oriImgName, String imgName, String imgUrl){
-        this.oriImgName = oriImgName;
-        this.imgName = imgName;
-        this.imgUrl = imgUrl;
-    }
+        public void updateItemImg(String oriImgName, String imgName, String imgUrl){
+            this.oriImgName = oriImgName;
+            this.imgName = imgName;
+            this.imgUrl = imgUrl;
+        }
 }
 
 

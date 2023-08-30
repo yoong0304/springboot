@@ -71,7 +71,7 @@ public class BoardApiController {
         return new ResponseEntity(body, headers, status);
     }
 
-    @PutMapping("/api/delete-board")
+    @DeleteMapping("/api/delete-board")
     public ResponseEntity delete_board(@RequestBody BoardDeleteDto boardDeleteDto) {
         System.out.println("delete_board/boardDeleteDto = " + boardDeleteDto);
         HttpHeaders headers = new HttpHeaders();
