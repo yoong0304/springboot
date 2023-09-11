@@ -104,6 +104,9 @@ public class ItemController {
 
         return "item/itemMng";
     }
+
+
+//   itemDtl => 상품 show = reviewShow 뷰와 같음
     @GetMapping(value = "/item/{itemId}")
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
