@@ -47,5 +47,8 @@ ___
 박은태|78점|97점|90점|
 박근수|95점|87|99점|
 
+![carousel_img2](https://github.com/yoong0304/springboot/assets/130129060/9911f7ec-936d-41bf-9200-45f130720394)
 
+![carousel_img1](https://github.com/yoong0304/springboot/assets/130129060/ededc5bd-10dd-4343-8333-11bee6a96645)
 
+![CHEONGJU](https://github.com/yoong0304/springboot/assets/130129060/41faea6d-f686-414c-a4a0-dfb692d0bf79)
